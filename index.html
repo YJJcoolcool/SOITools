@@ -37,7 +37,7 @@
                 <fieldset class="p-2" style="border: 1px solid lightgray;">
                     <table id="subnettable">
                         <tr>
-                            <td><input type="range" min="1" max="32" value="24" oninput="maskbits(this.value)"></td>
+                            <td><input type="range" min="1" max="32" value="24" oninput="maskbits(this.value)" id="slider"></td>
                             <td><b><label id="subnetmode">Subnetting</label></b></td>
                         </tr>
                         <tr>
@@ -46,9 +46,21 @@
                             <td><label id="maxsubnets">Max Subnets: -</label></td>
                         </tr>
                         <tr>
-                            <td><label id="wildcard"></label></td>
+                            <td><b><label id="wildcard"></label></b></td>
                             <td><label id="hostbits">Host Bits: -</label></td>
                             <td><label id="maxhosts">Max Hosts: -</label></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <br>
+                <fieldset class="p-2" style="border: 1px solid lightgray;">
+                    <table id="subnettable">
+                        <tr>
+                            <td><label id="maskbits">Current Network: 0.0.0.0</label></td>
+                            <td><label id="subnetmask">Subnet Mask: -</label></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><label id="hostbits">Current Host Range: <input type="text" id="hostrange" value="192.168.10.0 to 192.168.10.1" readonly></label></td>
                         </tr>
                     </table>
                 </fieldset>
