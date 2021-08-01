@@ -110,15 +110,18 @@ function updatehostrange(subnetmask){
     const ip2 = document.getElementById('ip2').value;
     const ip3 = document.getElementById('ip3').value;
     const ip4 = document.getElementById('ip4').value;
+    splitsubnetmask = subnetmask.split(".");
     var final = "";
-    if (subnetmask.startsWith("255.")) {
+    if (splitsubnetmask[0]=="255") {
         final+=ip1+".";
-        if (subnetmask.startsWith("255.255.")) {
+        if (splitsubnetmask[1]=="255") {
             final+=ip2+".";
-            if (subnetmask.startsWith("255.255.255.")) {
+            if (splitsubnetmask[2]=="255") {
                 final+=ip3+".";
-                if (subnetmask.startsWith("255.255.255.255")) {
+                if (splitsubnetmask[3]=="255") {
                     final+=ip4;
+                } else {
+
                 }
             }
         }
