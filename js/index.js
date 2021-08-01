@@ -10,8 +10,11 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
 });
 
 function onDarkMode(on){
-    if (on) document.getElementById('body').classList.add("text-light","bg-dark");
-    else document.getElementById('body').classList.remove("text-light","bg-dark");
+    if (on) {
+        document.getElementById('body').classList.add("text-light","bg-dark");
+    } else {
+        document.getElementById('body').classList.remove("text-light","bg-dark");
+    }
 }
 
 function checkvalidip(id){

@@ -1,3 +1,7 @@
+#menu{
+  border-bottom: 2px solid white;
+}
+
 /* Chrome, Safari, Edge, Opera */
 .noupdown::-webkit-outer-spin-button,
 .noupdown::-webkit-inner-spin-button {
