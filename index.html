@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/index.js"></script>
+    <title>C328 Tools</title>
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-dark bg-dark px-3 py-0">
+            <span class="navbar-brand mb-0 h1">C328 Tools</span>
+            <div class="navbar-expand">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">Subnet Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Command Generator</a>
+                    </li>
+                  </ul>
+            </div>
+        </nav>
+        <div id='subnetcalculator' class="container-fluid p-2">
+            <form>
+                <label>Host IP:</label>
+                <input type="number" min="0" max="255" onkeyup="checkvalidip(this.id)" id="ip1" class="noupdown ipv4" autofocus>
+                <input type="number" min="0" max="255" onkeyup="checkvalidip(this.id)" id="ip2" class="noupdown ipv4">
+                <input type="number" min="0" max="255" onkeyup="checkvalidip(this.id)" id="ip3" class="noupdown ipv4">
+                <input type="number" min="0" max="255" onkeyup="checkvalidip(this.id)" id="ip4" class="noupdown ipv4">
+                <b><label id="classtype">Class A Address</label></b>
+                <br><br>
+                <fieldset class="p-2" style="border: 1px solid lightgray;">
+                    <table id="subnettable">
+                        <tr>
+                            <td><input type="range" min="1" max="32" value="24" oninput="maskbits(this.value)"></td>
+                            <td><b><label id="subnetmode">Subnetting</label></b></td>
+                        </tr>
+                        <tr>
+                            <td><label id="maskbits">Mask Bits: 24</label></td>
+                            <td><label id="subnetbits">Subnet Bits: -</label></td>
+                            <td><label id="maxsubnets">Max Subnets: -</label></td>
+                        </tr>
+                        <tr>
+                            <td><label id="wildcard"></label></td>
+                            <td><label id="hostbits">Host Bits: -</label></td>
+                            <td><label id="maxhosts">Max Hosts: -</label></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

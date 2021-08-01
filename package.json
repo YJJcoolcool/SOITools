@@ -1,0 +1,22 @@
+{
+  "name": "c328tools",
+  "version": "1.0.0",
+  "description": "Tools for C328 Intelligent Networks",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YJJcoolcool/C328Tools.git"
+  },
+  "author": "YJJcoolcool",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YJJcoolcool/C328Tools/issues"
+  },
+  "homepage": "https://github.com/YJJcoolcool/C328Tools#readme",
+  "dependencies": {
+    "electron": "^13.1.7"
+  }
+}
