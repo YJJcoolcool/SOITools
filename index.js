@@ -41,7 +41,7 @@ app.on('ready', ()=>{
 
 ipcMain.on("getCSV", ()=>{
     console.log("Getting CSV...")
-    fs.createReadStream(path.join(__dirname,"data","test.csv"))
+    fs.createReadStream(path.join(__dirname,"data","data.csv"))
     .pipe(csv())
     .on('data', (data) => literallyEverything.push(data))
     .on('end', () => {
