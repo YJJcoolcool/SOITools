@@ -1,6 +1,9 @@
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
+const fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
+const csv = require('csv-parser');
+
 
 // SET ENV
 process.env.NODE_ENV = 'production';
@@ -30,4 +33,16 @@ app.on('ready', ()=>{
     globalShortcut.register('CommandOrControl+Q', () => {
         app.quit();
     })
+	globalShortcut.register('CommandOrControl+R', function() {
+		mainWindow.reload()
+	})
+});
+
+const literallyEverything = [];
+
+fs.createReadStream(path.join(__dirname,"data","test.csv"))
+  .pipe(csv())
+  .on('data', (data) => literallyEverything.push(data))
+  .on('end', () => {
+    console.log("Finished reading CSV file!");
 });

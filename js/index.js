@@ -18,7 +18,6 @@ function onDarkMode(on){
 }
 
 function checkvalidip(id){
-    const classtype = document.getElementById('classtype');
     if (document.getElementById(id).value>255){
         document.getElementById(id).value=255;
     }
@@ -128,3 +127,18 @@ function updatehostrange(subnetmask){
     }
     document.getElementById('hostrange').value=final;
 }
+
+window.onload = () =>{
+    var fileInput = document.getElementById("csv"),
+    readFile = function () {
+        var reader = new FileReader();
+        console.log(reader)
+        reader.onload = function () {
+            document.getElementById('out').innerHTML = reader.result;
+        };
+        // start reading the file. When it is done, calls the onload event defined above.
+        reader.readAsBinaryString(fileInput.files[0]);
+    };
+
+    fileInput.addEventListener('change', readFile);
+}   
