@@ -3,6 +3,7 @@ const url = require('url');
 const path = require('path');
 const fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 const csv = require('csv-parser');
+require('update-electron-app')();
 
 const literallyEverything = [];
 
