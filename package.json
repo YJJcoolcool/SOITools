@@ -1,10 +1,12 @@
 {
   "name": "c328tools",
-  "version": "1.0.0",
+  "productName": "C328 Tools",
+  "version": "0.1.0",
   "description": "Tools for C328 Intelligent Networks",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-win": "electron-packager . C328 Tools --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"C328 Tools\""
   },
   "repository": {
     "type": "git",

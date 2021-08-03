@@ -31,7 +31,7 @@ app.on('ready', ()=>{
     mainWindow.on('closed', function(){
         app.quit();
     });
-    //mainWindow.removeMenu();
+    mainWindow.removeMenu();
     globalShortcut.register('CommandOrControl+Q', () => {
         app.quit();
     })
