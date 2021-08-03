@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./css/menu.css">
     <link rel="stylesheet" href="./css/literallyeverything.css">
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/darkmode.js"></script>
+    <script src="./js/literallyeverything.js"></script>
     <title>C328 Tools</title>
 </head>
 <body class="" id="body">
@@ -32,12 +33,10 @@
         <br>
         <div id='subnetcalculator' class="container-fluid p-2">
             <form>
-                <input type="text" placeholder="Search for definitions and answers...">
+                <input type="text" onkeyup="searcheverything()" placeholder="Search for definitions and answers..." id="search">
             </form>
-            <p>Select local CSV File:</p>
-                <input id="csv" type="file">
-            </div>
-            <p id="out"></p>
+            <div id="results"></div>
+        </div>
     </div>
 </body>
 </html>

@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 const csv = require('csv-parser');
 
+const literallyEverything = [];
 
 // SET ENV
 process.env.NODE_ENV = 'production';
@@ -29,7 +30,7 @@ app.on('ready', ()=>{
     mainWindow.on('closed', function(){
         app.quit();
     });
-    mainWindow.removeMenu();
+    //mainWindow.removeMenu();
     globalShortcut.register('CommandOrControl+Q', () => {
         app.quit();
     })
@@ -38,11 +39,14 @@ app.on('ready', ()=>{
 	})
 });
 
-const literallyEverything = [];
-
-fs.createReadStream(path.join(__dirname,"data","test.csv"))
-  .pipe(csv())
-  .on('data', (data) => literallyEverything.push(data))
-  .on('end', () => {
-    console.log("Finished reading CSV file!");
-});
+ipcMain.on("getCSV", ()=>{
+    console.log("Getting CSV...")
+    fs.createReadStream(path.join(__dirname,"data","test.csv"))
+    .pipe(csv())
+    .on('data', (data) => literallyEverything.push(data))
+    .on('end', () => {
+        console.log("Finished reading CSV file.");
+        mainWindow.webContents.send("giveCSV",literallyEverything)
+        console.log("Sent to page.")
+    });
+})

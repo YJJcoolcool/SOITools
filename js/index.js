@@ -1,22 +1,3 @@
-window.onload = ()=>{
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        onDarkMode(true)
-    }
-}
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    const newColorScheme = e.matches ? "dark" : "light";
-    if (newColorScheme=='dark') onDarkMode(true)
-    else onDarkMode(false);
-});
-
-function onDarkMode(on){
-    if (on) {
-        document.getElementById('body').classList.add("text-light","bg-dark");
-    } else {
-        document.getElementById('body').classList.remove("text-light","bg-dark");
-    }
-}
-
 function checkvalidip(id){
     if (document.getElementById(id).value>255){
         document.getElementById(id).value=255;
@@ -127,18 +108,3 @@ function updatehostrange(subnetmask){
     }
     document.getElementById('hostrange').value=final;
 }
-
-window.onload = () =>{
-    var fileInput = document.getElementById("csv"),
-    readFile = function () {
-        var reader = new FileReader();
-        console.log(reader)
-        reader.onload = function () {
-            document.getElementById('out').innerHTML = reader.result;
-        };
-        // start reading the file. When it is done, calls the onload event defined above.
-        reader.readAsBinaryString(fileInput.files[0]);
-    };
-
-    fileInput.addEventListener('change', readFile);
-}   
