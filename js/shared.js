@@ -1,6 +1,10 @@
-window.onload = ()=>{
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        onDarkMode(true)
+// Dark Mode
+document.onreadystatechange = ()=>{
+    if (document.readyState === "complete"){
+        console.log("yesah")
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            onDarkMode(true)
+        }
     }
 }
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {

@@ -3,8 +3,11 @@ const {ipcRenderer} = electron;
 let literallyeverything;
 
 window.onload = () =>{
-    console.log("yes");
     ipcRenderer.send("getCSV");
+    if (localStorage.getItem("search")!==""){
+        document.querySelector('#search').value=localStorage.getItem("search");
+        setTimeout(function(){searcheverything()},100);
+    }
 }
 
 ipcRenderer.on("giveCSV", (e, item)=>{
@@ -14,12 +17,14 @@ ipcRenderer.on("giveCSV", (e, item)=>{
 function searcheverything(){
     const query = document.querySelector('#search').value;
     const results = document.querySelector('#results');
+    localStorage.setItem("search",query);
     let indexesincluded=[];
     results.innerHTML="";
     if (query.length == 1){
         for (var i=0; i<literallyeverything.length ;i++){
             if (literallyeverything[i]['title'].substring(0,1).toUpperCase()==query.toUpperCase()){
                 listStuff(i);
+                indexesincluded.push(0)
             }
         }
     } else if (query.length>1){
@@ -32,8 +37,13 @@ function searcheverything(){
                 indexesincluded.push(literallyeverything[i]['title']);
             }
         }
-    } else {
-        results.innerHTML="";
+    }
+    if (indexesincluded.length<1){
+        if (query.length>0){
+            results.innerHTML="<p class='m-2'><i>We couldn't find anything... =(</i></p>"
+        } else {
+            results.innerHTML="<p class='m-2'><i>Results will appear here.</i></p>"
+        }
     }
 }
 
@@ -41,7 +51,7 @@ function listStuff(index){
     const results = document.querySelector('#results');
     var title = document.createElement("button");
     title.innerHTML=literallyeverything[index]['title'];
-    title.classList.add("btn","mt-2","bg-secondary","text-light");
+    title.classList.add("btn","mt-3","bg-secondary","text-light");
     title.setAttribute("onclick","showContent("+index+")")
     results.appendChild(title);
     results.innerHTML+="<br>";

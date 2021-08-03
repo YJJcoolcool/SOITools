@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="./css/menu.css">
     <link rel="stylesheet" href="./css/literallyeverything.css">
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/darkmode.js"></script>
+    <script src="./js/shared.js"></script>
     <script src="./js/literallyeverything.js"></script>
     <title>C328 Tools</title>
 </head>
-<body class="" id="body">
+<body id="body">
     <div class="container-fluid p-0">
         <nav class="navbar navbar-dark bg-dark px-3 py-0" id="menu">
             <span class="navbar-brand mb-0 h1">C328 Tools</span>
@@ -22,7 +22,7 @@
                         <a class="nav-link" href="./index.html" title="IPv4 Subnet Calculator">Subnet Calculator</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" title="Generate Cisco IOS Commands">Command Generator</a>
+                        <a class="nav-link" onclick="alert('Sorry, that feature is not available yet!')" href="#" title="Generate Cisco IOS Commands">Command Generator</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="" title="Search our entire library of definitions and answers">Literally Everything</a>
@@ -31,11 +31,11 @@
             </div>
         </nav>
         <br>
-        <div id='subnetcalculator' class="container-fluid p-2">
+        <div id='subnetcalculator' class="container-fluid py-2 px-4">
             <form>
-                <input type="text" onkeyup="searcheverything()" placeholder="Search for definitions and answers..." id="search">
+                <input type="text" onkeyup="searcheverything()" placeholder="Search for definitions and answers..." id="search" autofocus>
             </form>
-            <div id="results"></div>
+            <div id="results"><p class='m-2'><i>Results will appear here.</i></p></div>
         </div>
     </div>
 </body>
