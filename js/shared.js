@@ -1,7 +1,6 @@
 // Dark Mode
 document.onreadystatechange = ()=>{
     if (document.readyState === "complete"){
-        console.log("yesah")
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             onDarkMode(true)
         }

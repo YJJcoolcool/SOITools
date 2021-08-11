@@ -3,16 +3,33 @@ const {ipcRenderer} = electron;
 let literallyeverything;
 
 window.onload = () =>{
-    ipcRenderer.send("getCSV");
+    ipcRenderer.send("getListOfCSVs");
+}
+
+ipcRenderer.on("giveCSV", (e, item)=>{
+    literallyeverything = item;
+    document.querySelector("#search").disabled = false;
+    document.querySelector("#results").innerHTML = "<i>Type something in the search box! Results will appear here.</i>";
+})
+
+ipcRenderer.on("giveListOfCSVs", (e, item)=>{
+    for (var i=0; i<item.length; i++) {
+        let element = document.createElement("option");
+        element.value=item[i].substring(0,item[i].length-4);
+        element.innerHTML=element.value;
+        document.querySelector("#listOfFiles").appendChild(element);
+    }
+})
+
+function getData(){
+    document.querySelector("#results").innerHTML = "<i>Retrieving data...</i>";
+    const filename = document.querySelector("#selectListOfFiles").value;
+    ipcRenderer.send("getCSV",filename);
     if (localStorage.getItem("search")!==""){
         document.querySelector('#search').value=localStorage.getItem("search");
         setTimeout(function(){searcheverything()},100);
     }
 }
-
-ipcRenderer.on("giveCSV", (e, item)=>{
-    literallyeverything = item;
-})
 
 function searcheverything(){
     const query = document.querySelector('#search').value;

@@ -8,7 +8,7 @@ require('update-electron-app')();
 const literallyEverything = [];
 
 // SET ENV
-process.env.NODE_ENV = 'production';
+//process.env.NODE_ENV = 'production';
 
 const {app, BrowserWindow, globalShortcut, ipcMain} = electron;
 
@@ -31,7 +31,9 @@ app.on('ready', ()=>{
     mainWindow.on('closed', function(){
         app.quit();
     });
-    mainWindow.removeMenu();
+    if (process.env.NODE_ENV == 'production') {
+        mainWindow.removeMenu();
+    }
     globalShortcut.register('CommandOrControl+Q', () => {
         app.quit();
     })
@@ -40,9 +42,20 @@ app.on('ready', ()=>{
 	})
 });
 
-ipcMain.on("getCSV", ()=>{
-    console.log("Getting CSV...")
-    fs.createReadStream(path.join(__dirname,"data","data.csv"))
+ipcMain.on("getListOfCSVs", ()=>{
+    console.log("Getting List of CSVs...")
+    var files = fs.readdirSync(path.join(__dirname,"data"));
+    files = files.filter(getOnlyCSV);
+    mainWindow.webContents.send("giveListOfCSVs",files)
+})
+
+function getOnlyCSV(filename) {
+    return filename.endsWith(".csv");
+}
+
+ipcMain.on("getCSV", (e,module)=>{
+    console.log("Getting CSV of "+module+"...")
+    fs.createReadStream(path.join(__dirname,"data",module+".csv"))
     .pipe(csv())
     .on('data', (data) => literallyEverything.push(data))
     .on('end', () => {

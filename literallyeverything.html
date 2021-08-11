@@ -10,12 +10,13 @@
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/shared.js"></script>
     <script src="./js/literallyeverything.js"></script>
-    <title>C328 Tools</title>
+    <title>SOI Tools</title>
+    <link rel="icon" type="image/png" href="icons/icon.png">
 </head>
 <body id="body">
     <div class="container-fluid p-0">
         <nav class="navbar navbar-dark bg-dark px-3 py-0" id="menu">
-            <span class="navbar-brand mb-0 h1">C328 Tools</span>
+            <span class="navbar-brand mb-0 h1">SOI Tools</span>
             <div class="navbar-expand">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -33,9 +34,21 @@
         <br>
         <div id='subnetcalculator' class="container-fluid py-2 px-4">
             <form>
-                <input type="text" onkeyup="searcheverything()" placeholder="Search for definitions and answers..." id="search" autofocus>
+                <select class="form-select" id="selectListOfFiles" onchange="getData()" oninput="getData()" autofocus>
+                    <option selected disabled>Select which module's database to search:</option>
+                    <option disabled>=========================================</option>
+                    <optgroup label="Modules available on your device:" id="listOfFiles">
+                        
+                    </optgroup>
+                </select>
+                <br>
+                <input type="text" onkeyup="searcheverything()" placeholder="Search for definitions and answers..." id="search" disabled>
             </form>
-            <div id="results"><p class='m-2'><i>Results will appear here.</i></p></div>
+            <div>
+                <p class='m-2' id="results">
+                    <i>Select a module list to continue.</i>
+                </p>
+            </div>
         </div>
     </div>
 </body>
