@@ -8,7 +8,7 @@ require('update-electron-app')();
 let literallyEverything = [];
 
 // SET ENV
-//process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'production';
 
 const {app, BrowserWindow, globalShortcut, ipcMain} = electron;
 

@@ -5,6 +5,12 @@ var literallyeverything;
 window.onload = () =>{
     literallyeverything = undefined;
     ipcRenderer.send("getListOfCSVs");
+    setTimeout(function(){
+        if (localStorage.getItem("selectedModule")!==""){
+            document.querySelector('#selectListOfFiles').value=localStorage.getItem("selectedModule");
+            getData();
+        }
+    },100);
 }
 
 ipcRenderer.on("giveCSV", (e, item)=>{
@@ -29,6 +35,7 @@ function getData(){
     literallyeverything = undefined;
     setTimeout(function(){
         const filename = document.querySelector("#selectListOfFiles").value;
+        localStorage.setItem("selectedModule",filename);
         ipcRenderer.send("getCSV",filename);
         if (localStorage.getItem("search")!==""){
             document.querySelector('#search').value=localStorage.getItem("search");
