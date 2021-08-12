@@ -70,12 +70,16 @@ let newarr = Array();
 function csvToArray(str) {
     newarr = Array()
     let rows = str.split("\n");
-    for (var i=1; i<rows.length-1; i++){
-       let rowdata = rows[i].split(",");
-       if (rowdata[1].startsWith('"')){
-           rowdata[1] = rowdata[1].substr(1,rowdata[1].length);
-       }
-       newarr.push({"title": rowdata[0], "content":rowdata[1]});
+    for (var i=1; i<rows.length-2; i++){
+        let title = rows[i].split(",")[0];
+        let content=rows[i].substring(rows[i].indexOf(",") + 1).trim();
+        if (content.startsWith('"')){
+            content = content.substr(1,content.length);
+        }
+        if (content.endsWith('"')){
+            content = content.substr(0,content.length-1);
+        }
+       newarr.push({"title": title, "content":content});
     }
     return newarr;
 }

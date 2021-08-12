@@ -6,3 +6,8 @@ input{
   font-size: large;
   outline: none;
 }
+img {
+  min-width: 350px;
+  max-width: 1000px;
+  width: 100%;
+}

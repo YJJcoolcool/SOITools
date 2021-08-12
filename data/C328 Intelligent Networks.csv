@@ -17,7 +17,7 @@ Best Practice - Home WAP,"Wireless network password, AP password, SSID"
 Blocked ports ,"Not root nor designated port so, blocked."
 Boot Sequence ,"Power-on self-test (POST) > Boot Loader > CPU init. > Flash memory init. > BOOT envr. varbl. locates IOS, IOS takes over."
 BPDU,Bridge Protocol Data Units (BPDUs) share info about themselves and their connections and are used to elect the root port.
-Bridge ID (BID) Components ,"REDIRECT,Bridge Protocol Data Units (BPDU)"
+Bridge ID (BID) Components ,REDIRECT:Bridge Protocol Data Units (BPDU)
 Bridge Protocol Data Units (BPDU) ,"Bridge Priority (4 bits), Extended System ID (12 bits), MAC Address (48 bits). See Root Bridge Election"
 Broadcast Domain ,"Where broadcast frames will reach. L2 switches, hubs and bridges extend the broadcast domain. Routers divide domains since they block broadcasts. Link between routers counts as broadcast domain."
 Broadcast Storm ,Abnormally high number of broadcasts overwhelming the network during a specific amount of time.
@@ -49,7 +49,7 @@ Election of Designated Ports (STP),All ports on the root bridge are designated p
 Election of Root Bridge (STP),"Switch with the lowest bridge ID (see Bridge ID Components) becomes root bridge. If two BIDs are the same, switch with lowest MAC address will win."
 Election of Root Ports (STP),Root port is selected based on the lowest overall cost (best path) to the root bridge. See Root Path Cost for calculating cost.
 Enable BPDU guard,(config)#spanning-tree portfast bpduguard default     OR     (config-if)#spanning-tree bpduguard enable
-Endpoint Security Solutions,"REDIRECT,Which three Cisco products focus on endpoint security solutions"
+Endpoint Security Solutions,REDIRECT:Which three Cisco products focus on endpoint security solutions
 EtherChannel Advantages,"No need for spanning tree recalculation when link goes down, no need to upgrade links to increase bandwidth, config can be done on the EtherChannel interface."
 EtherChannel Load-balancing ,"Source to Destination IP, source to destination MAC."
 EtherChannel Requirements ,"All ports need to be the same speed, duplex, VLAN info like native and allowed VLANs, and trunking mode."
@@ -64,17 +64,17 @@ Hot Standby Router Protocol (HSRP) ,Transparent failover of first hope device; r
 HSRP,"Cisco Proprietary Protocol. Uses active and standby routers. By default, device with the highest IPv4 addr is elected as the active router, except if a HSRP priority value is set. Priority is 100 by default, highest priority becomes active router. Active router sends Hello Messages every 3 seconds by default. Standby router becomes active one after 10 seconds if no hello message is received. No load balancing."
 HSRP States,"Initial - First state after config change or when interface first becomes available. Learn - Router has not determined the virtual IP addr and has not seen hello messages from the active router. It will be waiting for messages from the active router. Listen - The router knows the virtual IP addr, but the router is neither the active router nor the standby router. It listens for hello messages from those routers. Speak - The router sends periodic hello messages and actively participates in the election of the active and/or standby router. Standby - The router is a candidate to become the next active router and sends periodic hello messages. Active - The router won the election."
 IEEE 802.1Q ,"For VLAN tag field, go to VLAN tag field. For untagged frames, go to VLAN types - native. "
-Interfaces missing in VLAN assignments,"REDIRECT,Trunking"
+Interfaces missing in VLAN assignments,REDIRECT:Trunking
 ip arp inspection validate src-mac (DAI),Checks source MAC in Ethernet header against sender MAC in ARP body.
 IP Routing ,"To allow inter-VLAN routing on a Layer 3 switch, run the ip routing command in the global config. "
 IPv4 Loopback Interface,A logical interface internal to the router. It is always in an UP state as long as the device is functioning properly.
 IPv6 SLACC Default Gateway ,link-local address of the router interface in the network.
 LACP,"IEEE 802.3ad (NOT Cisco Proprietary), for LACP modes, see LACP States."
 LACP States ,"On - Force channel without LACP exchange. Active - Active negotiation state, port init. negotiations by sending LACP packets. Passive - Passive negotiation state, port receives & responds but does not initiate LACP negotiation. (On-On, Active-Active, Active-Passive)"
-Link Aggregation Protocols,"REDIRECT,EtherChannel Types"
+Link Aggregation Protocols,REDIRECT:EtherChannel Types
 Local AAA,Ideal for small networks where the username and password is stored in the router.
 Lower sender port priority ,"Default port priority is 128. If 1 switch’s port were configured with a lower port priority, other switch’s port in forwarding state. The other port on S4 would be a blocking state, prevent loop."
-Lowest overall cost to root bridge ,"REDIRECT,Root Port Election"
+Lowest overall cost to root bridge ,REDIRECT:Root Port Election
 MAC addr table full,Switch will treat all frames as unknown unicast and flood all incoming frames to all ports in the local VLAN.
 Management Frames,"For management frames by AP, see AP Broadcast Frames."
 Management Interface Creation (only on the management device) ,"In global config, type interface vlan <vlan id>, then ip add <ip addr> <subnet>, no shutdown, then go back to global config,and type ip default-gateway <ip addr>"
@@ -82,7 +82,7 @@ Min. Ethernet Frame Size ,64 bytes (any lower is treated as collision fragments/
 Mitigate VLAN attacks,"Enable trunking manually, disable DTP, set native VLAN to unused VLAN."
 mls qos trust cos ,"Sets the trusted state of an interface, such as voice."
 Multiple equal-cost paths  ,"When a switch has multiple equal-cost paths to the root bridge, root bridge is chosen using Lowest sender BID, Lowest sender port priority, Lowest sender port ID."
-Native VLAN,"REDIRECT,VLAN Types"
+Native VLAN,REDIRECT:VLAN Types
 no switchport access vlan <vlan no.>,"When the command no switchport access vlan <vlan id> command is issued, the interface associated with that VLAN returns to VLAN 1."
 no switchport trunk native vlan ,Reset native vlan of trunk.
 no switchport ,Converts a port into a routed port.
@@ -129,7 +129,7 @@ Switch Verification commands,"<b>show interfaces <interface></b>: disp. interfac
 Switch Virtual Interface (SVI) Inter-VLAN Routing, An SVI needs to be created for each VLAN.
 Switching ,"Uses CAM table which maps MAC addresses to ports (interface). When frame received, check src MAC in addr table, if not in addr table, add MAC and port to table. Else, send to port in addr table. If dest. MAC is new, bcast to all ports except ingress port. Else, send to port in addr table."
 Switchport commands,Enter switchport mode <mode> first. <mode> can be access or trunk. <br>Access: switchport mode access     Trunk: switchport mode trunk<br>Allow VLANs on trunks: switchport trunk allowed vlan <vlan list> (NOTE: ONLY the VLANs listed will be allowed)
-Telnet Configuration ,"REDIRECT,SSH/Telnet Configuration."
+Telnet Configuration ,REDIRECT:SSH/Telnet Configuration.
 Telnet Port,TCP port 23
 Telnet ,"Sends everything in plain text, including usernames & passwords. Use SSH instead as it's more secure."
 Transport Input ,"Specifies which connection (SSH/Telnet/both) to allow on vty lines. To configure, go to vty lines (line vty 0-15) then type transport input <all | ssh | telnet>"
@@ -138,7 +138,7 @@ Trunking ,"Trunk ports do not show in show vlan brief as they do not belong to a
 Types of Wireless Networks,"WPAN - Wireless Personal-Area Network, low powered transmitters, short range network, based on 802.15 standard and 2.4 GHz. WLAN - Wireless LAN, uses transmitters to cover medium sized network. Suitable for home, office and campus. Based on 802.11 standard, uses 2.4 or 5 GHz.  WMAN - Wireless Metropolitan Area Network, uses transmitters to cover a larger geographic area, suitable for cities / districts, use specific licensed frequencies. WWAN - Wireless Wide Area Networks, uses transmitters to cover an extensive geographic area, suitable for national and global comms, also use specific licensed frequencies."
 Untagged frames ,Use native vlan (see VLAN types - native)
 Verification Commands ,"show running-config - Shows currently running configuration. show ip interface - Shows IP configuration of interfaces. show vlan - Shows VLAN configuration. show interfaces trunk - Shows trunk configuration, along with native VLAN."
-Violation modes,"REDIRECT,Port Security Violation."
+Violation modes,REDIRECT:Port Security Violation.
 VLAN benefits ,"Smaller bcast domains, more security as devices can only comm. in same vlan, improved network efficiency & perf., cost reduction as no need to buy switches, simple project & app mgment. Separate functions makes specialised apps easier."
 VLAN communication ,Devices can only communicate within the same vlan. e.g. broadcast cannot go from vlan 20 to vlan 30.
 VLAN creation ,"In global config, enter vlan <vlan id>, then name <vlan-name>"

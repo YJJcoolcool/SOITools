@@ -87,7 +87,7 @@ function showContent(index){
     if (literallyeverything[index]['content'].startsWith("REDIRECT")){
         results.innerHTML+="<p class='mt-2'><i>Redirected from "+literallyeverything[index]['title']+"</i><p>";
         for (var i=0; i<literallyeverything.length ;i++){
-            if (literallyeverything[i]['title'].toUpperCase().includes(literallyeverything[index]['content'].split(",")[1].toUpperCase())){
+            if (literallyeverything[i]['title'].toUpperCase().trim().includes(literallyeverything[index]['content'].split(":")[1].toUpperCase().trim())){
                 index = i;
                 break;
             }
