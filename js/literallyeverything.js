@@ -1,12 +1,15 @@
 const electron = require('electron');
 const {ipcRenderer} = electron;
-let literallyeverything;
+var literallyeverything;
 
 window.onload = () =>{
+    literallyeverything = undefined;
     ipcRenderer.send("getListOfCSVs");
 }
 
 ipcRenderer.on("giveCSV", (e, item)=>{
+    literallyeverything = undefined;
+    console.log(literallyeverything);
     literallyeverything = item;
     document.querySelector("#search").disabled = false;
     document.querySelector("#results").innerHTML = "<i>Type something in the search box! Results will appear here.</i>";
@@ -23,12 +26,15 @@ ipcRenderer.on("giveListOfCSVs", (e, item)=>{
 
 function getData(){
     document.querySelector("#results").innerHTML = "<i>Retrieving data...</i>";
-    const filename = document.querySelector("#selectListOfFiles").value;
-    ipcRenderer.send("getCSV",filename);
-    if (localStorage.getItem("search")!==""){
-        document.querySelector('#search').value=localStorage.getItem("search");
-        setTimeout(function(){searcheverything()},100);
-    }
+    literallyeverything = undefined;
+    setTimeout(function(){
+        const filename = document.querySelector("#selectListOfFiles").value;
+        ipcRenderer.send("getCSV",filename);
+        if (localStorage.getItem("search")!==""){
+            document.querySelector('#search').value=localStorage.getItem("search");
+            setTimeout(function(){searcheverything()},100);
+        }
+    },100);
 }
 
 function searcheverything(){

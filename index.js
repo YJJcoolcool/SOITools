@@ -5,7 +5,7 @@ const fs = require('fs'); // Load the File System to execute our common tasks (C
 const csv = require('csv-parser');
 require('update-electron-app')();
 
-const literallyEverything = [];
+let literallyEverything = [];
 
 // SET ENV
 //process.env.NODE_ENV = 'production';
@@ -55,12 +55,27 @@ function getOnlyCSV(filename) {
 
 ipcMain.on("getCSV", (e,module)=>{
     console.log("Getting CSV of "+module+"...")
-    fs.createReadStream(path.join(__dirname,"data",module+".csv"))
-    .pipe(csv())
-    .on('data', (data) => literallyEverything.push(data))
-    .on('end', () => {
-        console.log("Finished reading CSV file.");
+    fs.readFile(path.join(__dirname,"data",module+".csv"), 'utf8', (err,data)=>{
+        if (err){
+            console.log(err);
+            return;
+        }
+        literallyEverything = csvToArray(data);
         mainWindow.webContents.send("giveCSV",literallyEverything)
-        console.log("Sent to page.")
     });
 })
+
+let newarr = Array();
+
+function csvToArray(str) {
+    newarr = Array()
+    let rows = str.split("\n");
+    for (var i=1; i<rows.length-1; i++){
+       let rowdata = rows[i].split(",");
+       if (rowdata[1].startsWith('"')){
+           rowdata[1] = rowdata[1].substr(1,rowdata[1].length);
+       }
+       newarr.push({"title": rowdata[0], "content":rowdata[1]});
+    }
+    return newarr;
+}
