@@ -79,6 +79,10 @@ function csvToArray(str) {
         if (content.endsWith('"')){
             content = content.substr(0,content.length-1);
         }
+        if (content.includes("\n")){
+            console.log("yes")
+        }
+        content = content.replace("\n","<br>")
        newarr.push({"title": title, "content":content});
     }
     return newarr;
