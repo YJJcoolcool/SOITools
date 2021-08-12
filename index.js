@@ -70,7 +70,7 @@ let newarr = Array();
 function csvToArray(str) {
     newarr = Array()
     let rows = str.split("\n");
-    for (var i=1; i<rows.length-2; i++){
+    for (var i=1; i<rows.length-1; i++){
         let title = rows[i].split(",")[0];
         let content=rows[i].substring(rows[i].indexOf(",") + 1).trim();
         if (content.startsWith('"')){
