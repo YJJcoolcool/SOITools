@@ -1,7 +1,7 @@
 {
   "name": "c328tools",
   "productName": "C328 Tools",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Tools for C328 Intelligent Networks",
   "main": "index.js",
   "scripts": {
