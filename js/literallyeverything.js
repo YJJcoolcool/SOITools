@@ -80,7 +80,7 @@ function searcheverything(){
 function listStuff(index){
     const results = document.querySelector('#results');
     var title = document.createElement("button");
-    title.innerHTML=literallyeverything[index]['title'];
+    title.innerHTML=literallyeverything[index]['title'].replace('""','"');
     title.classList.add("btn","mt-3","bg-secondary","text-light");
     title.setAttribute("onclick","showContent("+index+")")
     results.appendChild(title);
