@@ -1,9 +1,9 @@
 [
     {
         "app": "v1.0.0",
-        "literallyeverything": {
-            "1": ["C228 Operating Systems Security", "19-8-21"],
-            "2": ["C328 Intelligent Networks", "19-8-21"]
-        }
+        "literallyeverything": [
+            ["C228 Operating Systems Security", "19-8-21"],
+            ["C328 Intelligent Networks", "19-8-21"]
+        ]
     }
 ]
