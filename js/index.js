@@ -11,7 +11,11 @@ function checkForUpdates(){
         url: "https://yjjcoolcool.github.io/SOITools/version.json",
         dataType: "JSON",
         success: function (response) {
-            console.log(response)
+            response = response[0]
+            console.log(response['literallyeverything']['1'])
+            for (let i=0; i<Object.keys(response['literallyeverything']).length; i++){
+                console.log(response['literallyeverything'][i][1])
+            }
         },
         error: function (obj, textStatus, errorThrown) {
             console.log("Error "+textStatus+": "+errorThrown);

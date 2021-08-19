@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 const csv = require('csv-parser');
 require('update-electron-app')();
+const {download} = require('electron-dl');
 
 let literallyEverything = [];
 
@@ -64,6 +65,12 @@ ipcMain.on("getCSV", (e,module)=>{
         mainWindow.webContents.send("giveCSV",literallyEverything)
     });
 })
+
+ipcMain.on('updateModule', (e, moduleFileName) => {
+    console.log(download(mainWindow, path.join("https://yjjcoolcool.github.io/SOITools/data",moduleFileName), {
+        directory: path.join(__dirname,"data")
+    }));
+});
 
 let newarr = Array();
 
