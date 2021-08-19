@@ -67,9 +67,23 @@ ipcMain.on("getCSV", (e,module)=>{
 })
 
 ipcMain.on('updateModule', (e, moduleFileName) => {
-    console.log(download(mainWindow, path.join("https://yjjcoolcool.github.io/SOITools/data",moduleFileName), {
-        directory: path.join(__dirname,"data")
-    }));
+    fs.unlink(path.join(__dirname,"data",moduleFileName), function(err){
+        if(err) console.log(err);
+        console.log('File deleted successfully');
+        console.log(download(mainWindow, path.join("https://yjjcoolcool.github.io/SOITools/data",moduleFileName), {
+            directory: path.join(__dirname,"data")
+        }));
+    })
+});
+
+ipcMain.on('updateVersion', (e) => {
+    fs.unlink(path.join(__dirname,"version.json"), function(err){
+        if(err) console.log(err);
+        console.log('Version file deleted successfully');
+        console.log(download(mainWindow, path.join("https://yjjcoolcool.github.io/SOITools/version.json"), {
+            directory: path.join(__dirname)
+        }));
+    })
 });
 
 let newarr = Array();

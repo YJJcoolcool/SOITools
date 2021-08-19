@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/menu.css">
-    <link rel="stylesheet" href="./css/literallyeverything.css">
+    <link rel="stylesheet" href="./css/settings.css">
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>if (window.module) module = window.module;</script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/shared.js"></script>
-    <script src="./js/literallyeverything.js"></script>
+    <script src="./js/settings.js"></script>
     <title>SOI Tools</title>
     <link rel="icon" type="image/png" href="icons/icon.png">
 </head>
@@ -26,32 +29,25 @@
                         <a class="nav-link" onclick="alert('Sorry, that feature is not available yet!')" href="#" title="Generate Cisco IOS Commands">Cisco IOS Command Generator</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="" title="Search our entire library of definitions and answers">Literally Everything</a>
+                        <a class="nav-link" href="./literallyeverything.html" title="Search our entire library of definitions and answers">Literally Everything</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./settings.html">Settings</a>
+                        <a class="nav-link active" href="">Settings</a>
                     </li>
                   </ul>
             </div>
         </nav>
         <br>
-        <div id='subnetcalculator' class="container-fluid py-2 px-4">
+        <div class="container-fluid py-2 px-4">
             <form>
-                <select class="form-select" id="selectListOfFiles" onchange="getData()" oninput="getData()" autofocus>
-                    <option selected disabled>Select which module's database to search: </option>
-                    <option disabled>----------------------------</option>
-                    <optgroup label="Modules available on your device:" id="listOfFiles">
-                        
-                    </optgroup>
-                </select>
+                <label class="switch">
+                    <input type="checkbox" id="autoUpdate" onchange="updateSettings(this.id, this.checked)">
+                    <span class="slider round"></span>
+                </label>
+                <label>Automatically check for and install updates</label>
                 <br>
-                <input type="text" onkeyup="searcheverything()" placeholder="Search for definitions and answers..." id="search" disabled>
+                <button class="btn btn-secondary my-3" onclick="checkForUpdates()">Check for updates and install them now</button>
             </form>
-            <div>
-                <p class='m-2' id="results">
-                    <i>Select a module list to continue.</i>
-                </p>
-            </div>
         </div>
     </div>
 </body>

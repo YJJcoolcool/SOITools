@@ -1,8 +1,9 @@
-$(document).ready(()=> {
-    checkForUpdates()
-    // if (localStorage.getItem("checkForUpdatesAutomatically")){
-    //     checkForUpdates()
-    // };
+const electron = require('electron');
+const {ipcRenderer} = electron;
+$(document).ready(()=>{
+    if (localStorage.getItem("autoUpdate")){
+        checkForUpdates()
+    };
 })
 
 function checkForUpdates(){
@@ -11,16 +12,34 @@ function checkForUpdates(){
         url: "https://yjjcoolcool.github.io/SOITools/version.json",
         dataType: "JSON",
         success: function (response) {
-            response = response[0]
-            console.log(response['literallyeverything']['1'])
-            for (let i=0; i<Object.keys(response['literallyeverything']).length; i++){
-                console.log(response['literallyeverything'][i][1])
-            }
+            $.getJSON(__dirname+"\\version.json", function(json) {
+                compareVer(json,response[0]['literallyeverything'])
+            });
         },
         error: function (obj, textStatus, errorThrown) {
             console.log("Error "+textStatus+": "+errorThrown);
         }
     });
+}
+
+function compareVer(json,response){
+    let localver = json[0]['literallyeverything'];
+    let needToUpdate = []
+    for (let i=0; i<localver.length; i++){
+        for (let j=0; j<response.length; j++){
+            if (localver[i][0]==response[j][0]){
+                if (localver[i][1]!=response[j][1]){
+                    needToUpdate.push(localver[i][0]+".csv")
+                }
+            }
+        }
+    }
+    for (let i=0; i<needToUpdate.length; i++){
+        ipcRenderer.send("updateModule",needToUpdate[i]);
+    }
+    if (needToUpdate.length!=0){
+        ipcRenderer.send("updateVersion");
+    }
 }
 
 function checkvalidip(id){
