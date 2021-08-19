@@ -3,7 +3,6 @@ const {ipcRenderer} = electron;
 var literallyeverything;
 
 window.onload = () =>{
-    literallyeverything = undefined;
     ipcRenderer.send("getListOfCSVs");
     setTimeout(function(){
         if (localStorage.getItem("selectedModule")!==""){
@@ -15,7 +14,6 @@ window.onload = () =>{
 
 ipcRenderer.on("giveCSV", (e, item)=>{
     literallyeverything = undefined;
-    console.log(literallyeverything);
     literallyeverything = item;
     document.querySelector("#search").disabled = false;
     document.querySelector("#results").innerHTML = "<i>Type something in the search box! Results will appear here.</i>";

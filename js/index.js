@@ -1,3 +1,24 @@
+$(document).ready(()=> {
+    checkForUpdates()
+    // if (localStorage.getItem("checkForUpdatesAutomatically")){
+    //     checkForUpdates()
+    // };
+})
+
+function checkForUpdates(){
+    $.ajax({
+        type: "GET",
+        url: "https://yjjcoolcool.github.io/SOITools/version.json",
+        dataType: "JSON",
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (obj, textStatus, errorThrown) {
+            console.log("Error "+textStatus+": "+errorThrown);
+        }
+    });
+}
+
 function checkvalidip(id){
     if (document.getElementById(id).value>255){
         document.getElementById(id).value=255;
