@@ -103,7 +103,7 @@ function csvToArray(str) {
         if (content.includes("\n")){
             console.log("yes")
         }
-        content = content.replace('""','"')
+        content = content.replaceAll('\"\"','\"')
        newarr.push({"title": title, "content":content});
     }
     return newarr;
