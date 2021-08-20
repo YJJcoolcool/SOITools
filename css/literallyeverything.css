@@ -21,3 +21,6 @@ table * {
 thead {
   font-weight: bold;
 }
+.red {
+  color: red;
+}
