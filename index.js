@@ -11,7 +11,7 @@ let literallyEverything = [];
 // SET ENV
 //process.env.NODE_ENV = 'production';
 
-const {app, BrowserWindow, globalShortcut, ipcMain} = electron;
+const {app, BrowserWindow, globalShortcut, ipcMain, dialog} = electron;
 
 let mainWindow;
 
@@ -48,6 +48,14 @@ ipcMain.on("getListOfCSVs", ()=>{
     var files = fs.readdirSync(path.join(__dirname,"data"));
     files = files.filter(getOnlyCSV);
     mainWindow.webContents.send("giveListOfCSVs",files)
+})
+ipcMain.on("showAlert", (e,type,title,message, buttons=[])=>{
+    dialog.showMessageBox(mainWindow, {
+        "type":type,
+        "title":title,
+        "message":message,
+        "buttons":buttons
+    })
 })
 
 function getOnlyCSV(filename) {

@@ -1,5 +1,3 @@
-const electron = require('electron');
-const {ipcRenderer} = electron;
 $(document).ready(()=>{
     if (localStorage.getItem("autoUpdate")){
         checkForUpdates()

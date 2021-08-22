@@ -1,6 +1,3 @@
-const electron = require('electron');
-const {ipcRenderer} = electron;
-
 window.onload = ()=>{
     let settingsList = ['autoUpdate']
     for (let i=0; i<settingsList.length; i++){

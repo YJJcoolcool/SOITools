@@ -16,7 +16,7 @@ img {
 button{
   text-align: left !important;
 }
-table * {
+table tr,td,th {
   border: 2px solid rgb(187, 187, 187);
   padding: 3px 10px;
 }

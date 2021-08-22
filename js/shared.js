@@ -1,3 +1,6 @@
+const electron = require('electron');
+const {ipcRenderer} = electron;
+
 // Dark Mode
 document.onreadystatechange = ()=>{
     if (document.readyState === "complete"){
@@ -19,3 +22,7 @@ function onDarkMode(on){
         document.getElementById('body').classList.remove("text-light","bg-dark");
     }
 }
+
+document.querySelector("#lnk-cisco").addEventListener("click", function(){
+    ipcRenderer.send("showAlert","error","Error","Sorry, that feature is not available yet!")
+})

@@ -1,6 +1,4 @@
-const electron = require('electron');
-const {ipcRenderer} = electron;
-var literallyeverything;
+let literallyeverything;
 
 window.onload = () =>{
     ipcRenderer.send("getListOfCSVs");
@@ -101,3 +99,7 @@ function showContent(index){
     results.innerHTML+="<h1>"+literallyeverything[index]['title']+"</h1>"
     results.innerHTML+="<p>"+literallyeverything[index]['content']+"</p>"
 }
+
+ipcRenderer.on('on-find', (e, args) => {
+  findInPage.openFindWindow()
+})
