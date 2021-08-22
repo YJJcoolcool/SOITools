@@ -1,7 +1,7 @@
 {
-  "name": "c328tools",
-  "productName": "C328 Tools",
-  "version": "1.0.0",
+  "name": "SOI Tools",
+  "productName": "SOI Tools",
+  "version": "1.1.0 New Dawn",
   "description": "All sorts of tools for modules in SOI",
   "main": "index.js",
   "scripts": {
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YJJcoolcool/C328Tools.git"
+    "url": "git+https://github.com/YJJcoolcool/SOITools.git"
   },
   "author": "YJJcoolcool",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/YJJcoolcool/C328Tools/issues"
+    "url": "https://github.com/YJJcoolcool/SOITools/issues"
   },
-  "homepage": "https://github.com/YJJcoolcool/C328Tools#readme",
+  "homepage": "https://github.com/YJJcoolcool/SOITools#readme",
   "dependencies": {
     "csv-parser": "^3.0.0",
     "update-electron-app": "^2.0.1"
