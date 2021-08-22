@@ -20,8 +20,9 @@
   "homepage": "https://github.com/YJJcoolcool/SOITools#readme",
   "dependencies": {
     "csv-parser": "^3.0.0",
-    "update-electron-app": "^2.0.1",
-    "electron-dl": "^3.2.1"
+    "electron-dl": "^3.2.1",
+    "electron-store": "^8.0.0",
+    "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
     "electron": "^13.2.1"
