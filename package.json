@@ -1,7 +1,7 @@
 {
   "name": "SOItools",
   "productName": "SOI Tools",
-  "version": "1.1.0 New Dawn",
+  "version": "1.1.0",
   "description": "All sorts of tools for modules in SOI",
   "main": "index.js",
   "scripts": {
