@@ -26,3 +26,9 @@ thead {
 .red {
   color: red;
 }
+samp {
+  background-color: rgb(18, 19, 5);
+  color: rgb(58, 204, 58);
+  padding: 1px 5px;
+  border-radius: 5px;
+}

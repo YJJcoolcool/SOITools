@@ -26,3 +26,7 @@ function onDarkMode(on){
 document.querySelector("#lnk-cisco").addEventListener("click", function(){
     ipcRenderer.send("showAlert","error","Error","Sorry, that feature is not available yet!")
 })
+
+document.querySelectorAll("samp").addEventListener('click',()=>{
+    alert(this.innerText)
+})
