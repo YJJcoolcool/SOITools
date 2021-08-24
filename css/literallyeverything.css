@@ -1,3 +1,6 @@
+select,br {
+  user-select: none;
+}
 input{
   border-radius: 100px;
   border: 2px solid #b3b3b3;
@@ -31,4 +34,7 @@ samp {
   color: rgb(58, 204, 58);
   padding: 1px 5px;
   border-radius: 5px;
+}
+samp b {
+  color: rgb(80, 230, 58);
 }

@@ -1,5 +1,6 @@
 #menu{
   border-bottom: 2px solid white;
+  user-select: none;
 }
 
 .nav-link:not(.active){

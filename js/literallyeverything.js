@@ -55,7 +55,10 @@ function searcheverything(){
         }
     } else if (query.length>1){
         for (var i=0; i<literallyeverything.length ;i++){
-            if (literallyeverything[i]['title'].toUpperCase().includes(query.toUpperCase()) && !(indexesincluded.includes(literallyeverything[i]['title']))){
+            if (literallyeverything[i]['title'].toUpperCase().startsWith(query.toUpperCase()) && !(indexesincluded.includes(literallyeverything[i]['title']))){
+                listStuff(i);
+                indexesincluded.push(literallyeverything[i]['title']);
+            } else if (literallyeverything[i]['title'].toUpperCase().includes(query.toUpperCase()) && !(indexesincluded.includes(literallyeverything[i]['title']))){
                 listStuff(i);
                 indexesincluded.push(literallyeverything[i]['title']);
             } else if (literallyeverything[i]['content'].toUpperCase().includes(query.toUpperCase()) && !(indexesincluded.includes(literallyeverything[i]['title']))){
