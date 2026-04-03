@@ -25,6 +25,6 @@
     "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
-    "electron": "^13.2.1"
+    "electron": "^41.1.1"
   }
 }
